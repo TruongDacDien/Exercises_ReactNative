@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { students } from './Data';
 
-export default function LoginScreen() {
-  const navigation = useNavigation();
+export default function LoginScreen({ route, navigation }) {
+  const { targetScreen } = route.params || {};
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [accounts, setAccounts] = useState([
-    {username: 'User1', password: '123'},
-    {username: 'User2', password: '321'},
-  ])
+  // Tạo ref để điều hướng focus
+  const passwordInputRef = useRef(null);
 
   const handleLogin = () => {
-    const userExists = accounts.some(account => account.username === username && account.password === password);
+    const student = students.find(student => student.username === username && student.password === password);
 
-    if (userExists) {
+    if (student) {
+      const studentId = student.idStudent;
       Alert.alert('Success', 'Login successful!', [
-        { text: 'OK', onPress: () => navigation.navigate('Home', { username }) }
+        {
+          text: 'OK', onPress: () => {
+            if (targetScreen) {
+              navigation.navigate(targetScreen, { username, studentId });
+            } else {
+              navigation.navigate('Home');
+            }
+          }
+        }
       ]);
     } else {
       Alert.alert('Error', 'Invalid username or password');
@@ -31,21 +38,25 @@ export default function LoginScreen() {
 
       <Text style={styles.label}>Username</Text>
       <TextInput
-        style = {styles.input}
+        style={styles.input}
         placeholder='Placeholder'
         placeholderTextColor="#888"
-        value={username}
+        value={username.trim()}
         onChangeText={setUsername}
+        returnKeyType="next" // Nhấn Enter sẽ chuyển sang ô tiếp theo
+        onSubmitEditing={() => passwordInputRef.current?.focus()} // Khi nhấn Enter sẽ focus vào ô password
       />
 
       <Text style={styles.label}>Password</Text>
       <TextInput
-        style = {styles.input}
+        ref={passwordInputRef} // Gán ref vào ô mật khẩu
+        style={styles.input}
         placeholder='..... .... ....'
         placeholderTextColor="#888"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
+        returnKeyType="done" // Nhấn Enter sẽ ẩn bàn phím
       />
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
@@ -66,16 +77,15 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
     borderRadius: 10,
     margin: 5,
-    marginTop: 30
   },
-  title:{
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20
   },
   label: {
-    alignSelf:'flex-start',
-    fontSize:16,
+    alignSelf: 'flex-start',
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5
   },
@@ -85,7 +95,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'black',
     borderRadius: 10,
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
     fontSize: 16,
     marginBottom: 20,
   },

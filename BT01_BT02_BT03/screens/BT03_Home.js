@@ -2,24 +2,12 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function HomeScreen({ route }) {
+export default function BT03_HomeScreen({ route }) {
   const { username } = route.params;
-  const navigation = useNavigation();
-
-  const handleLogout = () => {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Login' }],
-    });
-  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome, {username}! 🎉</Text>
-
-      <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Logout</Text>
-      </TouchableOpacity>
     </View>
   );
 }
