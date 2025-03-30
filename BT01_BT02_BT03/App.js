@@ -7,6 +7,8 @@ import BT01_HomeScreen from './screens/BT01_Home';
 import BT02_HomeScreen from './screens/BT02_Home';
 import BT02_DetailScreen from './screens/BT02_Detail';
 import BT03_HomeScreen from './screens/BT03_Home';
+import BT03_DetailScreen from './screens/BT03_Detail';
+import BT03_AddScreen from './screens/BT03_Add';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +22,8 @@ export default function App() {
         <Stack.Screen name="BT02_Home" component={BT02_HomeScreen}/> 
         <Stack.Screen name="BT02_Detail" component={BT02_DetailScreen}/>
         <Stack.Screen name="BT03_Home" component={BT03_HomeScreen}/>
+        <Stack.Screen name="BT03_Detail" component={BT03_DetailScreen}/>
+        <Stack.Screen name="BT03_Add" component={BT03_AddScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
