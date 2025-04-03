@@ -4,6 +4,7 @@ const students = [
 ];
 
 const subjects = [
+  // Subjects for Student 1
   {
     idSubject: 1,
     idStudent: 1,
@@ -52,6 +53,8 @@ const subjects = [
     start: "03/10/22",
     end: "11/02/23"
   },
+
+  // Subjects for Student 2
   {
     idSubject: 5,
     idStudent: 2,
@@ -102,4 +105,18 @@ const subjects = [
   },
 ];
 
-export { students, subjects };
+const todolists = [
+  // Todos for Student 1
+  { idTodo: 1, idStudent: 1, deadlineTime: '23:59', deadlineDay: '10/04/2025', todoContent: 'Hoàn thành bài tập Giải tích tuần 3' },
+  { idTodo: 2, idStudent: 1, deadlineTime: '20:00', deadlineDay: '12/04/2025', todoContent: 'Ôn tập chương 2 Đại số tuyến tính' },
+  { idTodo: 3, idStudent: 1, deadlineTime: '18:30', deadlineDay: '15/04/2025', todoContent: 'Viết code bài tập Nhập môn lập trình' },
+  { idTodo: 4, idStudent: 1, deadlineTime: '21:45', deadlineDay: '17/04/2025', todoContent: 'Tóm tắt lý thuyết về Cấu trúc Máy tính' },
+
+  // Todos for Student 2
+  { idTodo: 5, idStudent: 2, deadlineTime: '23:00', deadlineDay: '09/04/2025', todoContent: 'Làm bài kiểm tra giữa kỳ Nhập môn mạng' },
+  { idTodo: 6, idStudent: 2, deadlineTime: '22:00', deadlineDay: '11/04/2025', todoContent: 'Hoàn thành project Lập trình trực quan' },
+  { idTodo: 7, idStudent: 2, deadlineTime: '19:00', deadlineDay: '14/04/2025', todoContent: 'Chuẩn bị tài liệu Cơ sở dữ liệu' },
+  { idTodo: 8, idStudent: 2, deadlineTime: '20:30', deadlineDay: '16/04/2025', todoContent: 'Làm báo cáo bài tập lớn Hệ điều hành' },
+];
+
+export { students, subjects, todolists };

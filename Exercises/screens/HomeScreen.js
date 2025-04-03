@@ -6,6 +6,7 @@ const screens = [
   { id: '1', name: 'BT01', screen: 'BT01_Home' },
   { id: '2', name: 'BT02', screen: 'BT02_Home' },
   { id: '3', name: 'BT03', screen: 'BT03_Home' },
+  { id: '4', name: 'BT04', screen: 'BT04_Home' },
 ];
 
 export default function HomeScreen({ navigation }) {
