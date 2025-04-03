@@ -1,4 +1,8 @@
-# Test Data for Student and Subjects
+# Exercises_ReactNative
+
+Homework on website courses will be done in the "Exercises" folder.
+
+## Test Data for Student and Subjects
 
 This repository contains sample data for students and their respective subjects. This data can be used for testing purposes in applications related to student management and scheduling.
 
